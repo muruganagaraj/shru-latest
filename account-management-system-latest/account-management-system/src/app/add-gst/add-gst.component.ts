@@ -17,8 +17,8 @@ export class AddGstComponent implements OnInit {
     @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
 
   ngOnInit() {
-    if(this.dialogRef.componentInstance.data) {
-    this.vm = this.convertVotoVM(this.dialogRef.componentInstance.data);
+    if (this.dialogRef.componentInstance.data) {
+      this.vm = this.convertVotoVM(this.dialogRef.componentInstance.data);
     } else {
       this.vm = {};
     }
@@ -26,18 +26,28 @@ export class AddGstComponent implements OnInit {
   }
   onClick(): void {
     let data: viewmodel = this.vm;
-    if(this.vm.Description || this.vm.GSTCode || this.vm.GST {
+    if (this.vm.Description || this.vm.GSTCode || this.vm.GST) {
       alert('valid model, need to make api call');
     } else {
       alert('model not valid');
-    }    
+    }
+    if (this.vm.GSTId) {
+
+    } else {
+
+    }
     this.dialogRef.close();
   }
   convertVotoVM(data: any): viewmodel {
-    let modaldata: viewmodel ={};
+    let modaldata: viewmodel = {};
     modaldata.GST = data.item.GST;
     modaldata.GSTCode = data.item.GSTCode;
     modaldata.Description = data.item.Description;
+    modaldata.GSTId = data.item.GSTId
     return modaldata;
+  }
+
+  onCancelClick(): void {
+    this.dialogRef.close();
   }
 }

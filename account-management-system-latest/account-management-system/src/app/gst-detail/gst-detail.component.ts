@@ -12,22 +12,14 @@ import { map, catchError, tap } from 'rxjs/operators';
   styleUrls: ['./gst-detail.component.css']
 })
 export class GstDetailComponent implements OnInit {
-
-  animal: string;
-  name: string;
   public vm: viewmodel[] = [];
 
 
 
   constructor(public dialog: MatDialog, private http: HttpClient) { }
   ngOnInit() {
-
-
     const endpoint = 'https://6d73py636l.execute-api.us-east-1.amazonaws.com/default/EDU_G_GetAll';
     this.getProducts(endpoint);
-    this.animal = "Lion";
-    this.name = "Shruthi";
-
   }
 
   getProducts(endpoint: any): any {
@@ -63,7 +55,6 @@ export class GstDetailComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.animal = result;
     });
   }
 
