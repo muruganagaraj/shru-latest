@@ -1,0 +1,168 @@
+<div class="main-content">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="card">
+          <div class="card-header card-header-danger">
+            <h4 class="card-title">Expense</h4>
+            <p class="card-category">Expense Entries</p>
+          </div>
+          <div class="card-body">
+            <form [formGroup]="expenseForm" (ngSubmit)="onSubmit()">
+              <div class="row">
+                <div class="col-md-6">
+                  <mat-form-field>
+                    <mat-select placeholder="Buyer" [(ngModel)]="selectedValue" name="color">
+                      <mat-option *ngFor="let color of colors" [value]="color">
+                        {{color}}
+                      </mat-option>
+                    </mat-select>
+                  </mat-form-field>
+                </div>
+                <div class="col-md-6">
+                  <!-- <mat-form-field>
+                                  <input matInput [matDatepicker]="picker" placeholder="Choose a date">
+                                  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                                  <mat-datepicker #picker></mat-datepicker>
+                                </mat-form-field> -->
+
+                  <!-- <md-input-container>
+                                  <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+                                  <button mdSuffix [mdDatepickerToggle]="picker"></button>
+                                  </md-input-container>
+                                  <md-datepicker #picker></md-datepicker> -->
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <mat-form-field class="example-full-width">
+                    <input matInput placeholder="Description" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-12">
+                  <button mat-fab class="bg-success" (click)="openDialog()">
+                    <i class="material-icons">add</i>
+                  </button>
+                  <div class="card">
+                    <div class="table-responsive">
+                      <table class="table">
+                        <thead class=" text-primary">
+                          <th>
+                            Item ID
+                          </th>
+                          <th>
+                            Item
+                          </th>
+                          <th>
+                            MRP/ Price
+                          </th>
+                          <th>
+                            Quantity
+                          </th>
+                          <th>
+                            Amount
+                          </th>
+                        </thead>
+                        <tbody>
+                          <tr>
+                            <td>BUY01</td>
+                            <td>Aditya Birla</td>
+                            <td>100</td>
+                            <td>10</td>
+                            <td>1000</td>
+                            <td class="td-actions text-right">
+                              <button mat-raised-button type="button" matTooltip="Edit Task"
+                                [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">edit</i>
+                              </button>
+                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">close</i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>BUY02</td>
+                            <td>Infosys</td>
+                            <td>Jayanagar, Bangalore</td>
+                            <td>5321680865</td>
+                            <td>G02</td>
+                            <td class="td-actions text-right">
+                              <button mat-raised-button type="button" matTooltip="Edit Task"
+                                [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">edit</i>
+                              </button>
+                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">close</i>
+                              </button>
+                            </td>
+                          </tr>
+                          <tr>
+                            <td>BUY03</td>
+                            <td>Wipro</td>
+                            <td>BSK, Bangalore</td>
+                            <td>4337008765</td>
+                            <td>G03</td>
+                            <td class="td-actions text-right">
+                              <button mat-raised-button type="button" matTooltip="Edit Task"
+                                [matTooltipPosition]="'above'" class="btn btn-primary btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">edit</i>
+                              </button>
+                              <button mat-raised-button type="button" matTooltip="Remove" [matTooltipPosition]="'above'"
+                                class="btn btn-danger btn-link btn-sm btn-just-icon">
+                                <i class="material-icons">close</i>
+                              </button>
+                            </td>
+                          </tr>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
+
+
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width" style="float:right;">
+                    <input matInput placeholder="Amount" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-6">
+                </div>
+                <div class="col-md-6">
+                  <mat-form-field class="example-full-width" style="float:right;">
+                    <input matInput placeholder="GST" type="text">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-10">
+                </div>
+                <div class="col-md-2">
+                  <mat-checkbox style="margin-left: -35px;">GST</mat-checkbox>
+                  <mat-select *ngIf="isGSTRequired" [(ngModel)]="selectedValue" name="color">
+                    <mat-option *ngFor="let color of colors" [value]="color">
+                      {{color}}
+                    </mat-option>
+                  </mat-select>
+                </div>
+              </div>
+              <div class="row">
+                <button mat-raised-button type="submit" class="btn btn-danger pull-right">Update Profile</button>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

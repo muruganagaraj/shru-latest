@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+.pull-right {
+    position: fixed;
+    right: 20px;
+    top: 65px;
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
